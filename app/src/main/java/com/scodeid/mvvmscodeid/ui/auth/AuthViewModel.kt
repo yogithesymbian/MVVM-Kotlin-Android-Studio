@@ -1,7 +1,10 @@
 package com.scodeid.mvvmscodeid.ui.auth
-
+// [3]
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.scodeid.mvvmscodeid.data.repositories.UserRepository
+import com.scodeid.mvvmscodeid.util.ApiException
+import com.scodeid.mvvmscodeid.util.Coroutines
 
 /**
  * @author
@@ -20,7 +23,9 @@ Linux 5.2.0-kali2-amd64
  * ==============================================================
  */
 
-class AuthViewModel : ViewModel() {
+class AuthViewModel(
+    private val repository: UserRepository
+) : ViewModel() {
     var email: String ?= null
     var pass: String ?= null
 
@@ -34,7 +39,18 @@ class AuthViewModel : ViewModel() {
             authListener?.onFailure("Invalid email or password")
             return //return for empty
         }
-        authListener?.onSuccess()
-        // success
+        Coroutines.main{
+            try {
+                val authResponse = repository.userLogin(email!!, pass!!)
+                // for check user is not null
+                authResponse.user?.let {
+                    authListener?.onSuccess(it)
+                    return@main // if success the above code will not run
+                }
+                authListener?.onFailure(authResponse.message!!)
+            } catch (e: ApiException) {
+                authListener?.onFailure(e.message!!)
+            }
+        }
     }
 }

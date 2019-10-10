@@ -10,6 +10,7 @@
                 name="viewmodel"
                 type="com.scodeid.mvvmscodeid.ui.auth.AuthViewModel"/>
     </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:id="@+id/root_layout"
             android:layout_width="match_parent"
@@ -106,7 +107,7 @@
                         android:layout_height="wrap_content"/>
 
                 <Button
-                        android:onClick="@={viewmodel::onLoginButtonClick}"
+                        android:onClick="@{viewmodel::onLoginButtonClick}"
                         android:layout_gravity="center_horizontal"
                         android:textAllCaps="false"
                         android:text="Sign In"

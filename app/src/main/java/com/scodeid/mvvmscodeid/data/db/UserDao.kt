@@ -1,10 +1,16 @@
-package com.scodeid.mvvmscodeid.ui.auth
-// [1]
+package com.scodeid.mvvmscodeid.data.db
+//[7]
+import androidx.lifecycle.LiveData
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.scodeid.mvvmscodeid.data.db.entities.CURRENT_USER_ID
 import com.scodeid.mvvmscodeid.data.db.entities.User
 
 /**
  * @author
- * Created by scode on 26,September,2019
+ * Created by scode on 04,October,2019
  * Yogi Arif Widodo
  * www.dicoding.com/users/297307
  * www.github.com/yogithesymbian
@@ -18,8 +24,13 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 Linux 5.2.0-kali2-amd64
  * ==============================================================
  */
-interface AuthListener {
-    fun onStarted()
-    fun onSuccess(user: User)
-    fun onFailure(message: String)
+
+@Dao
+interface UserDao{
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun upsert(user: User) : Long
+
+    @Query("SELECT * FROM user WHERE uid = $CURRENT_USER_ID")
+    fun getUser() : LiveData<User>
 }

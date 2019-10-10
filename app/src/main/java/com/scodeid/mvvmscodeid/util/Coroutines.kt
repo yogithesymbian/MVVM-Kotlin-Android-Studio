@@ -1,10 +1,12 @@
-package com.scodeid.mvvmscodeid.ui.auth
+package com.scodeid.mvvmscodeid.util
 // [1]
-import com.scodeid.mvvmscodeid.data.db.entities.User
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * @author
- * Created by scode on 26,September,2019
+ * Created by scode on 07,October,2019
  * Yogi Arif Widodo
  * www.dicoding.com/users/297307
  * www.github.com/yogithesymbian
@@ -18,8 +20,11 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 Linux 5.2.0-kali2-amd64
  * ==============================================================
  */
-interface AuthListener {
-    fun onStarted()
-    fun onSuccess(user: User)
-    fun onFailure(message: String)
+// coroutines scope
+object Coroutines {
+    // main thread
+    fun main(work: suspend(() -> Unit)) =
+        CoroutineScope(Dispatchers.Main).launch {
+            work()
+        }
 }

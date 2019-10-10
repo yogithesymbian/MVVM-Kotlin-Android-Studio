@@ -1,10 +1,10 @@
-package com.scodeid.mvvmscodeid.ui.auth
-// [1]
-import com.scodeid.mvvmscodeid.data.db.entities.User
+package com.scodeid.mvvmscodeid.util
+
+import java.io.IOException
 
 /**
  * @author
- * Created by scode on 26,September,2019
+ * Created by scode on 08,October,2019
  * Yogi Arif Widodo
  * www.dicoding.com/users/297307
  * www.github.com/yogithesymbian
@@ -18,8 +18,5 @@ JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 Linux 5.2.0-kali2-amd64
  * ==============================================================
  */
-interface AuthListener {
-    fun onStarted()
-    fun onSuccess(user: User)
-    fun onFailure(message: String)
-}
+
+class ApiException(message: String): IOException(message)
