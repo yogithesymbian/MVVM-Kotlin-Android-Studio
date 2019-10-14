@@ -4,7 +4,6 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
-// kotlin kapt and navigatoin safeargs plugin
 apply plugin: 'kotlin-kapt'
 
 apply plugin: "androidx.navigation.safeargs"
@@ -68,6 +67,7 @@ dependencies {
     implementation "androidx.room:room-runtime:2.2.0-rc01"
     implementation "androidx.room:room-ktx:2.2.0-rc01"
     kapt "androidx.room:room-compiler:2.2.0-rc01"
+    kapt "androidx.databinding:databinding-compiler:3.5.1"
     kapt "com.android.databinding:compiler:3.4.2"
 
     // ANDROID NAV ARCH
@@ -81,8 +81,8 @@ dependencies {
     implementation "androidx.preference:preference-ktx:1.1.0"
 
     // JAX-B dependencies for JDK 9+
-    implementation "javax.xml.bind:jaxb-api:2.2.12-b140109.1041"
-    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
-    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
-    implementation "javax.activation:activation:1.1.1"
+//    implementation "javax.xml.bind:jaxb-api:2.2.11"
+//    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+//    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+//    implementation "javax.activation:activation:1.1.1"
 }
