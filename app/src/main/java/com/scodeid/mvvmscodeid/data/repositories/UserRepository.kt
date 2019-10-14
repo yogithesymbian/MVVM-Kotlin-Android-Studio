@@ -35,4 +35,6 @@ class UserRepository(
     }
     // save user to local
     suspend fun saveUser(user: User) = db.getUserDao().upsert(user)
+    // live data
+    fun getUser() = db.getUserDao().getUser()
 }

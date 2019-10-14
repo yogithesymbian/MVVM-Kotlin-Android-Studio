@@ -24,7 +24,8 @@ Linux 5.2.0-kali2-amd64
  */
 @Database(
     entities = [User::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase: RoomDatabase(){
 
