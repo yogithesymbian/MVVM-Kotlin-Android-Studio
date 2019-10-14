@@ -30,6 +30,8 @@ class AuthViewModel(
     var pass: String ?= null
 
     var authListener : AuthListener? = null
+    // to observe user change and call this function in LoginActivity // user login or not
+    fun getLoggedInUser() = repository.getUser()
 
     fun onLoginButtonClick(view: View){
 
@@ -45,6 +47,8 @@ class AuthViewModel(
                 // for check user is not null
                 authResponse.user?.let {
                     authListener?.onSuccess(it)
+                    // save user to database
+                    repository.saveUser(it)
                     return@main // if success the above code will not run
                 }
                 authListener?.onFailure(authResponse.message!!)

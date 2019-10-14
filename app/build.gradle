@@ -58,7 +58,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
 
     // NEW MATERIAL DESIGN
-    implementation "com.google.android.material:material:1.1.0-alpha10"
+    implementation "com.google.android.material:material:1.1.0-beta01"
 
     // CODE IN DEPENDENCY INJECTION
     implementation "org.kodein.di:kodein-di-generic-jvm:6.2.1"
@@ -80,4 +80,9 @@ dependencies {
 
     implementation "androidx.preference:preference-ktx:1.1.0"
 
+    // JAX-B dependencies for JDK 9+
+    implementation "javax.xml.bind:jaxb-api:2.2.12-b140109.1041"
+    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+    implementation "javax.activation:activation:1.1.1"
 }
